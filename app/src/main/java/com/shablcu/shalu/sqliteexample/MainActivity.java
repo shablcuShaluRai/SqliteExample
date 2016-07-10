@@ -11,37 +11,57 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 DatabaseHelper mydb;
-    EditText editname,editsurname,editmarks;
-    Button adddatabtn,buttonView;
-    int num;
+    EditText editname,editsurname,editmarks,editid;
+    Button adddatabtn,buttonView,btnupdate;
+    int num,id1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mydb =  new DatabaseHelper(this);
-
+      editid=(EditText)findViewById(R.id.editText_id);
         editname=(EditText)findViewById(R.id.editText_name);
         editsurname=(EditText)findViewById(R.id.editText_surname);
         editmarks=(EditText)findViewById(R.id.editText_marks);
        adddatabtn=(Button)findViewById(R.id.button_add);
         buttonView=(Button)findViewById(R.id.viewbutton);
-
+        btnupdate=(Button)findViewById(R.id.button_update);
         AddData();
         viewAll();
+        Updatedata();
 
     }
 
+
+
+    public  void  Updatedata(){
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isUpdate = mydb.updatedata(editid.getText().toString(),editname.getText().toString(),
+                        editsurname.getText().toString(),editmarks.getText().toString()
+                        );
+
+                if (isUpdate == true) {
+                    Toast.makeText(MainActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Data not updated", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
 
     public void AddData(){
         adddatabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isInserted = mydb.insertData(editname.getText().toString(),
-                        editsurname.getText().toString(),
-                        num = Integer.parseInt(editmarks.getText().toString()));
+                        editsurname.getText().toString(),editmarks.getText().toString());
 
-                if (isInserted = true) {
+                if (isInserted == true) {
                     Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Data Not  Inserted", Toast.LENGTH_SHORT).show();
@@ -73,7 +93,7 @@ DatabaseHelper mydb;
                     buffer.append("ID:"+res.getString(0)+"\n");
                     buffer.append("NAME:"+res.getString(1)+"\n");
                     buffer.append("SURNAME:"+res.getString(2)+"\n");
-                    buffer.append("MARKS:"+res.getString(3)+"\n");
+                    buffer.append("MARKS:"+res.getString(3)+"\n\n");
 
                 }
 

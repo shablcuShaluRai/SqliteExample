@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertData(String name, String surname, Integer marks){
+    public boolean insertData(String name, String surname, String marks){
         SQLiteDatabase db=this.getWritableDatabase();
 
         ContentValues contentValues= new ContentValues();
@@ -46,11 +46,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
       long result=  db.insert(TABLE_NAME,null,contentValues);
 
         if (result==-1){
-            return  true;
+            return  false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
 
@@ -60,6 +60,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor res=db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
+
+    }
+
+    public boolean updatedata(String id, String name,String surname, String marks){
+
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COL_1,id);
+        contentValues.put(COL_2,name);
+        contentValues.put(COL_3,surname);
+        contentValues.put(COL_4, marks);
+        db.update(TABLE_NAME,contentValues, "ID = ? ",new String[] { id } );
+        return true;
+
 
     }
 

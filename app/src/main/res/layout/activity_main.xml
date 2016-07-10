@@ -70,10 +70,10 @@
         android:layout_height="wrap_content"
         android:text="Add Data"
         android:id="@+id/button_add"
+        android:layout_marginTop="78dp"
         android:layout_below="@+id/editText_marks"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="43dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -83,5 +83,33 @@
         android:layout_alignTop="@+id/button_add"
         android:layout_alignRight="@+id/editText_surname"
         android:layout_alignEnd="@+id/editText_surname" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/button_update"
+        android:layout_below="@+id/viewbutton"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ID "
+        android:id="@+id/textView4"
+        android:layout_below="@id/textView3"
+        android:layout_marginTop="45dp"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_id"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4"  />
 
 </RelativeLayout>
