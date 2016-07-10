@@ -89,8 +89,10 @@
         android:layout_height="wrap_content"
         android:text="Update"
         android:id="@+id/button_update"
-        android:layout_below="@+id/viewbutton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/button_add"
+        android:layout_alignRight="@+id/button_add"
+        android:layout_alignEnd="@+id/button_add"
+        android:layout_marginTop="42dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -111,5 +113,14 @@
         android:layout_alignTop="@+id/textView4"
         android:layout_toRightOf="@+id/textView4"
         android:layout_toEndOf="@+id/textView4"  />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/button_delete"
+        android:layout_alignTop="@+id/button_update"
+        android:layout_alignRight="@+id/editText_id"
+        android:layout_alignEnd="@+id/editText_id" />
 
 </RelativeLayout>
